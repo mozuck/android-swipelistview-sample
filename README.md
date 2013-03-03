@@ -3,7 +3,7 @@ SwipeListView Demo ([Play Store Demo][1])
 
 An Android List View implementation with support for drawable cells and many other swipe related features.
 
-Am Sample App for [47deg/android-swipelistview][2]
+Sample App for [47deg/android-swipelistview][2]
 
 # License
 
