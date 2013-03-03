@@ -35,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".sample.activities.SettingsActivity"/>
+        <activity android:name=".sample.activities.SettingsActivity" android:windowSoftInputMode="stateAlwaysHidden"/>
 
     </application>
 

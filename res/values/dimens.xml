@@ -23,11 +23,14 @@
     <dimen name="radius_default">3dp</dimen>
     <dimen name="padding_default">8dp</dimen>
     <dimen name="margin_default">5dp</dimen>
+    <dimen name="line_default">1dp</dimen>
 
     <!-- Products -->
     <dimen name="height_list">90dp</dimen>
     <dimen name="size_list_image">64dp</dimen>
-    <dimen name="font_size_title">18sp</dimen>
+    <dimen name="font_size_title">17sp</dimen>
     <dimen name="font_size_description">15sp</dimen>
+
+    <dimen name="margin_setting">20dp</dimen>
 
 </resources>

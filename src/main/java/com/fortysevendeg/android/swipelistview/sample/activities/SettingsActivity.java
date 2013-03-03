@@ -23,17 +23,21 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.*;
 import com.fortysevendeg.android.swipelistview.R;
 import com.fortysevendeg.android.swipelistview.SwipeListView;
 import com.fortysevendeg.android.swipelistview.sample.utils.SettingsManager;
 
 public class SettingsActivity extends Activity {
 
+    private static int MAX_OFFSET = 200;
+
     private SettingsManager settings;
+
+    private SeekBar sbOffsetLeft;
+    private TextView tvOffsetLeft;
+    private SeekBar sbOffsetRight;
+    private TextView tvOffsetRight;
 
     CompoundButton.OnCheckedChangeListener radiosListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
@@ -113,50 +117,47 @@ public class SettingsActivity extends Activity {
             rbActionRightReveal.setChecked(true);
         }
 
+        tvOffsetLeft = (TextView) findViewById(R.id.offset_label_left);
+        tvOffsetLeft.setText(SettingsActivity.this.getString(R.string.leftOffset, (int) settings.getSwipeOffsetLeft()));
 
-        final EditText etOffsetLeft = (EditText) findViewById(R.id.offset_left);
-        etOffsetLeft.setText(String.format("%d", (int) settings.getSwipeOffsetLeft()));
-        etOffsetLeft.addTextChangedListener(new TextWatcher() {
+        sbOffsetLeft = (SeekBar) findViewById(R.id.offset_left);
+        sbOffsetLeft.setMax(MAX_OFFSET);
+        sbOffsetLeft.setProgress((int) settings.getSwipeOffsetLeft());
+        sbOffsetLeft.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                settings.setSwipeOffsetLeft(progress);
+                tvOffsetLeft.setText(SettingsActivity.this.getString(R.string.leftOffset, progress));
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!TextUtils.isEmpty(s)) {
-                    try {
-                        settings.setSwipeOffsetLeft(Integer.parseInt(s.toString()));
-                    } catch (NumberFormatException e) {
-                        etOffsetLeft.setText("0");
-                    }
-                }
+            public void onStartTrackingTouch(SeekBar seekBar) {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
 
-        final EditText etOffsetRight = (EditText) findViewById(R.id.offset_right);
-        etOffsetRight.setText(String.format("%d", (int) settings.getSwipeOffsetRight()));
-        etOffsetRight.addTextChangedListener(new TextWatcher() {
+        tvOffsetRight = (TextView) findViewById(R.id.offset_label_right);
+
+        sbOffsetRight = (SeekBar) findViewById(R.id.offset_right);
+        tvOffsetRight.setText(SettingsActivity.this.getString(R.string.rightOffset, (int) settings.getSwipeOffsetRight()));
+        sbOffsetRight.setMax(MAX_OFFSET);
+        sbOffsetRight.setProgress((int) settings.getSwipeOffsetRight());
+        sbOffsetRight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                settings.setSwipeOffsetRight(progress);
+                tvOffsetRight.setText(SettingsActivity.this.getString(R.string.rightOffset, progress));
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!TextUtils.isEmpty(s)) {
-                    try {
-                        settings.setSwipeOffsetRight(Integer.parseInt(s.toString()));
-                    } catch (NumberFormatException e) {
-                        etOffsetRight.setText("0");
-                    }
-                }
+            public void onStartTrackingTouch(SeekBar seekBar) {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
 

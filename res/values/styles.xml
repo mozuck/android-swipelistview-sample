@@ -24,7 +24,7 @@
     <style name="ListBackContent">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">@dimen/height_list</item>
-        <item name="android:background">@color/background_list_back</item>
+        <item name="android:background">@drawable/background_item</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -64,7 +64,6 @@
     <!-- Settings -->
 
     <style name="SettingTitle">
-        <item name="android:paddingBottom">@dimen/padding_default</item>
         <item name="android:textColor">@color/text_title</item>
         <item name="android:textSize">@dimen/font_size_title</item>
         <item name="android:textStyle">bold</item>
@@ -72,13 +71,19 @@
 
     <style name="SettingContent">
         <item name="android:paddingBottom">@dimen/padding_default</item>
-        <item name="android:layout_marginLeft">@dimen/padding_default</item>
+        <item name="android:layout_marginLeft">@dimen/margin_setting</item>
     </style>
 
     <style name="SettingText">
         <item name="android:textColor">@color/text_description</item>
         <item name="android:textSize">@dimen/font_size_description</item>
         <item name="android:layout_marginRight">@dimen/margin_default</item>
+    </style>
+
+    <style name="Line">
+        <item name="android:background">@color/line</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/line_default</item>
     </style>
 
 </resources>

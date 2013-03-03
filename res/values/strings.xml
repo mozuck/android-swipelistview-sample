@@ -34,7 +34,8 @@
     <string name="reveal">Reveal</string>
     <string name="dismiss">Dismiss</string>
     <string name="rightAction">Right Action</string>
-    <string name="offsets">Offsets</string>
+    <string name="rightOffset">Right Offset (%1$s dp)</string>
+    <string name="leftOffset">Left Offset (%1$s dp)</string>
     <string name="dp">dp</string>
     <string name="animationTime">Animation Time (Default: 0)</string>
     <string name="milliseconds">Milliseconds</string>
@@ -48,5 +49,6 @@
     <string name="goToGitHub">Go to GitHub</string>
 
     <string name="dontShow">Don\'t show this message again</string>
+    <string name="others">Others</string>
 
 </resources>

@@ -18,197 +18,207 @@
   ~  limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="@color/background_app"
-              android:padding="@dimen/padding_default"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SettingTitle"
-            android:text="@string/mode"/>
-
-    <RadioGroup
-            android:orientation="horizontal"
-            style="@style/SettingContent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:background="@color/background_app"
+            android:padding="@dimen/padding_default"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mode_both"
-                style="@style/SettingText"
-                android:text="@string/both"/>
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mode_right"
-                style="@style/SettingText"
-                android:text="@string/right"/>
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mode_left"
-                style="@style/SettingText"
-                android:text="@string/left"/>
-
-    </RadioGroup>
-
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SettingTitle"
-            android:text="@string/leftAction"/>
-
-    <RadioGroup
-            android:orientation="horizontal"
-            style="@style/SettingContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/action_left_reveal"
-                style="@style/SettingText"
-                android:text="@string/reveal"/>
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/action_left_dismiss"
-                style="@style/SettingText"
-                android:text="@string/dismiss"/>
-
-    </RadioGroup>
-
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SettingTitle"
-            android:text="@string/rightAction"/>
-
-    <RadioGroup
-            android:orientation="horizontal"
-            style="@style/SettingContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/action_right_reveal"
-                style="@style/SettingText"
-                android:text="@string/reveal"/>
-
-        <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/action_right_dismiss"
-                style="@style/SettingText"
-                android:text="@string/dismiss"/>
-
-    </RadioGroup>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SettingTitle"
-            android:text="@string/offsets"/>
+            android:layout_height="match_parent">
 
     <LinearLayout
-            android:orientation="horizontal"
-            style="@style/SettingContent"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/SettingText"
-                android:text="@string/right"/>
+                style="@style/SettingTitle"
+                android:text="@string/mode"/>
 
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/offset_right"
-                style="@style/SettingText"
-                android:minWidth="50dp"
-                android:inputType="number"
-                android:text="0"/>
+        <ImageView style="@style/Line"/>
+
+        <RadioGroup
+                android:orientation="horizontal"
+                style="@style/SettingContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mode_both"
+                    style="@style/SettingText"
+                    android:text="@string/both"/>
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mode_right"
+                    style="@style/SettingText"
+                    android:text="@string/right"/>
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mode_left"
+                    style="@style/SettingText"
+                    android:text="@string/left"/>
+
+        </RadioGroup>
+
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/SettingText"
-                android:text="@string/dp"/>
+                style="@style/SettingTitle"
+                android:text="@string/leftAction"/>
+
+        <ImageView style="@style/Line"/>
+
+        <RadioGroup
+                android:orientation="horizontal"
+                style="@style/SettingContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/action_left_reveal"
+                    style="@style/SettingText"
+                    android:text="@string/reveal"/>
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/action_left_dismiss"
+                    style="@style/SettingText"
+                    android:text="@string/dismiss"/>
+
+        </RadioGroup>
+
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/SettingText"
-                android:text="@string/left"/>
+                style="@style/SettingTitle"
+                android:text="@string/rightAction"/>
 
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/offset_left"
-                style="@style/SettingText"
-                android:minWidth="50dp"
-                android:inputType="number"
-                android:text="0"/>
+        <ImageView style="@style/Line"/>
+
+        <RadioGroup
+                android:orientation="horizontal"
+                style="@style/SettingContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/action_right_reveal"
+                    style="@style/SettingText"
+                    android:text="@string/reveal"/>
+
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/action_right_dismiss"
+                    style="@style/SettingText"
+                    android:text="@string/dismiss"/>
+
+        </RadioGroup>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/SettingTitle"
+                android:id="@+id/offset_label_right"
+                />
+
+        <ImageView style="@style/Line"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                style="@style/SettingContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <SeekBar
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/offset_right"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SettingTitle"
+                android:id="@+id/offset_label_left"
+                />
+
+        <ImageView style="@style/Line"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                style="@style/SettingContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <SeekBar
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/offset_left"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SettingTitle"
+                android:text="@string/animationTime"/>
+
+        <ImageView style="@style/Line"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                style="@style/SettingContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/animation_time"
+                    style="@style/SettingText"
+                    android:inputType="number"
+                    android:minWidth="50dp"
+                    android:text="0"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/SettingText"
+                    android:text="@string/milliseconds"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/SettingTitle"
+                android:text="@string/others"/>
+
+        <ImageView style="@style/Line"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/open_long_press"
                 style="@style/SettingText"
-                android:text="@string/dp"/>
+                android:text="@string/openOnLongPress"/>
+
 
     </LinearLayout>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SettingTitle"
-            android:text="@string/animationTime"/>
-
-    <LinearLayout
-            android:orientation="horizontal"
-            style="@style/SettingContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/animation_time"
-                style="@style/SettingText"
-                android:inputType="number"
-                android:minWidth="50dp"
-                android:text="0"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/SettingText"
-                android:text="@string/milliseconds"/>
-
-    </LinearLayout>
-
-    <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/open_long_press"
-            style="@style/SettingTitle"
-            android:text="@string/openOnLongPress"/>
-
-
-</LinearLayout>
+</ScrollView>
