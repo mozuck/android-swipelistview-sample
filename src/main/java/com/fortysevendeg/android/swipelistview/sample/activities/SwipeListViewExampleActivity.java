@@ -102,13 +102,23 @@ public class SwipeListViewExampleActivity extends FragmentActivity {
             }
 
             @Override
+            public void onStartOpen(int position, int action, boolean right) {
+                Log.d("swipe", String.format("onStartOpen %d - action %d", position, action));
+            }
+
+            @Override
+            public void onStartClose(int position, boolean right) {
+                Log.d("swipe", String.format("onStartClose %d", position));
+            }
+
+            @Override
             public void onClickFrontView(int position) {
-                Log.d("swipe", "onClickFrontView " + position);
+                Log.d("swipe", String.format("onClickFrontView %d", position));
             }
 
             @Override
             public void onClickBackView(int position) {
-                Log.d("swipe", "onClickBackView " + position);
+                Log.d("swipe", String.format("onClickBackView %d", position));
             }
 
             @Override
