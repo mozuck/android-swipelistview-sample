@@ -18,9 +18,11 @@
 
 package com.fortysevendeg.android.swipelistview.sample.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
@@ -49,6 +51,8 @@ public class SwipeListViewExampleActivity extends FragmentActivity {
 
     private SwipeListView swipeListView;
 
+    private ProgressDialog progressDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,27 +61,27 @@ public class SwipeListViewExampleActivity extends FragmentActivity {
 
         data = new ArrayList<PackageItem>();
 
-        PackageManager appInfo = getPackageManager();
-        List<ApplicationInfo> listInfo = appInfo.getInstalledApplications(0);
-        Collections.sort(listInfo, new ApplicationInfo.DisplayNameComparator(appInfo));
-
-
-        for (int index=0; index<listInfo.size(); index++) {
-            try {
-                ApplicationInfo content = listInfo.get(index);
-                if ( (content.flags != ApplicationInfo.FLAG_SYSTEM) && content.enabled) {
-                    if (content.icon!=0) {
-                        PackageItem item = new PackageItem();
-                        item.setName(getPackageManager().getApplicationLabel(content).toString());
-                        item.setPackageName(content.packageName);
-                        item.setIcon(getPackageManager().getDrawable(content.packageName, content.icon, content));
-                        data.add(item);
-                    }
-                }
-            } catch (Exception e) {
-
-            }
-        }
+//        PackageManager appInfo = getPackageManager();
+//        List<ApplicationInfo> listInfo = appInfo.getInstalledApplications(0);
+//        Collections.sort(listInfo, new ApplicationInfo.DisplayNameComparator(appInfo));
+//
+//
+//        for (int index=0; index<listInfo.size(); index++) {
+//            try {
+//                ApplicationInfo content = listInfo.get(index);
+//                if ( (content.flags != ApplicationInfo.FLAG_SYSTEM) && content.enabled) {
+//                    if (content.icon!=0) {
+//                        PackageItem item = new PackageItem();
+//                        item.setName(getPackageManager().getApplicationLabel(content).toString());
+//                        item.setPackageName(content.packageName);
+//                        item.setIcon(getPackageManager().getDrawable(content.packageName, content.icon, content));
+//                        data.add(item);
+//                    }
+//                }
+//            } catch (Exception e) {
+//
+//            }
+//        }
 
 
         adapter = new PackageAdapter(this, data);
@@ -134,10 +138,12 @@ public class SwipeListViewExampleActivity extends FragmentActivity {
 
         reload();
 
-        if (PreferencesManager.getInstance(this).getShowAbout()) {
-            AboutDialog logOutDialog = new AboutDialog();
-            logOutDialog.show(getSupportFragmentManager(), "dialog");
-        }
+        new ListAppTask().execute();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
 
     }
@@ -187,6 +193,50 @@ public class SwipeListViewExampleActivity extends FragmentActivity {
         switch (requestCode) {
             case REQUEST_CODE_SETTINGS:
                 reload();
+        }
+    }
+
+    public class ListAppTask extends AsyncTask<Void, Void, List<PackageItem>> {
+
+        protected List<PackageItem> doInBackground(Void... args) {
+            PackageManager appInfo = getPackageManager();
+            List<ApplicationInfo> listInfo = appInfo.getInstalledApplications(0);
+            Collections.sort(listInfo, new ApplicationInfo.DisplayNameComparator(appInfo));
+
+            List<PackageItem> data = new ArrayList<PackageItem>();
+
+            for (int index=0; index<listInfo.size(); index++) {
+                try {
+                    ApplicationInfo content = listInfo.get(index);
+                    if ( (content.flags != ApplicationInfo.FLAG_SYSTEM) && content.enabled) {
+                        if (content.icon!=0) {
+                            PackageItem item = new PackageItem();
+                            item.setName(getPackageManager().getApplicationLabel(content).toString());
+                            item.setPackageName(content.packageName);
+                            item.setIcon(getPackageManager().getDrawable(content.packageName, content.icon, content));
+                            data.add(item);
+                        }
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            return data;
+        }
+
+        protected void onPostExecute(List<PackageItem> result) {
+            data.clear();
+            data.addAll(result);
+            adapter.notifyDataSetChanged();
+            if (progressDialog != null) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+            if (PreferencesManager.getInstance(SwipeListViewExampleActivity.this).getShowAbout()) {
+                AboutDialog logOutDialog = new AboutDialog();
+                logOutDialog.show(getSupportFragmentManager(), "dialog");
+            }
         }
     }
 

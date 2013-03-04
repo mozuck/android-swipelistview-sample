@@ -51,4 +51,6 @@
     <string name="dontShow">Don\'t show this message again</string>
     <string name="others">Others</string>
 
+    <string name="loading">Loading</string>
+
 </resources>
