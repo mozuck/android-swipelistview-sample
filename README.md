@@ -5,6 +5,8 @@ An Android List View implementation with support for drawable cells and many oth
 
 Sample App for [47deg/android-swipelistview][2]
 
+[![SwipeListView screenshot][3]][4]
+
 # License
 
 Copyright (C) 2012 47 Degrees, LLC
@@ -25,3 +27,5 @@ limitations under the License.
 
 [1]: https://play.google.com/store/apps/details?id=com.fortysevendeg.android.swipelistview
 [2]: https://github.com/47deg/android-swipelistview
+[3]: https://raw.github.com/47deg/android-swipelistview-sample/master/screenshot_swipelistview_small.png
+[4]: https://raw.github.com/47deg/android-swipelistview-sample/master/screenshot_swipelistview_large.png
